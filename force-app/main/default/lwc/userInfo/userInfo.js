@@ -14,7 +14,7 @@ export default class HelloWorld extends LightningElement {
     if(data){
       this.userId = data.fields.ContactId.value;
     }
-    };;
+    };
 
   @wire(getContactOpp, { idUser: '$userId'})
   opportunity({ error, data }) {
