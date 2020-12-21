@@ -4,7 +4,8 @@ public without sharing class ContactController {
         return [
             SELECT 
                 (SELECT Id,Name FROM Opportunities),
-                (SELECT Related_Contact_Name__c, npe4__Contact__c, npe4__RelatedContact__c, Name FROM npe4__Relationships__r) 
+                (SELECT Related_Contact_Name__c, npe4__Contact__c, npe4__RelatedContact__c, Name FROM npe4__Relationships__r),
+                (SELECT npe01__Payment_Amount__c, npe01__Payment_Date__c FROM Payments__r WHERE npe01__Paid__c = true)
             FROM Contact 
             WHERE ID = :idUser    
         ];

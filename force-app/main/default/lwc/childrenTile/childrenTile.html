@@ -1,6 +1,8 @@
 <template >
     <template if:true={children}>
-   {children.Name}
-   {children. Age__c}
+        <lightning-accordion-section name={children.Name} label={children.Name}>
+            <p>{children.Name}</p>
+            <p>{children. Age__c}</p>
+        </lightning-accordion-section>
     </template>
 </template>

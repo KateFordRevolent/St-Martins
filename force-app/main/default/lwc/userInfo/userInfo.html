@@ -1,12 +1,12 @@
 <template>
     <lightning-card title="Information about sponsored Children" icon-name="custom:custom1">
-        <div class="slds-m-around_medium">
+        <lightning-accordion class="example-accordion">
             <template if:true={results}>
                 <template for:each={results.npe4__Relationships__r} for:item="children">
                     <c-children-tile key={children.Id} children-id={children.npe4__RelatedContact__c} ></c-children-tile>
                 </template>
             </template>
-        </div>
+        </lightning-accordion>
     </lightning-card>
     <lightning-card title="Information about non-sponsored Children" icon-name="custom:custom12">
         <div class="slds-m-around_medium">
