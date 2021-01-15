@@ -1,10 +1,10 @@
-# Project Structure
+## Project Structure
 
-classes
-ContactController
+- Classes
+   - ContactController
 
-lwc
-userInfo
+- LWC
+  - userInfo
     - childrenTile
         - fileUpload
     - myOpportunitiesTile
