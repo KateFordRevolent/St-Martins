@@ -1,32 +1,45 @@
 <template>
-    <lightning-card title="Information about sponsored Children" icon-name="custom:custom1">
-        <lightning-accordion class="example-accordion">
-            <template if:true={results}>
-                <template for:each={results.npe4__Relationships__r} for:item="children">
-                    <c-children-tile key={children.Id} children-id={children.npe4__RelatedContact__c} ></c-children-tile>
-                </template>
-            </template>
-        </lightning-accordion>
-    </lightning-card>
-    <lightning-card title="Information about non-sponsored Children" icon-name="custom:custom12">
-        <div class="slds-m-around_medium">
-
-        
-        </div>
-    </lightning-card>
-    <lightning-card title="My payments" icon-name="custom:custom9">
-        <lightning-accordion class="example-accordion">
-            <lightning-accordion-section name="Next Payments" label="Next Payments">
-
-            </lightning-accordion-section>
-            <lightning-accordion-section name="Past Payments" label="Past Payments">
-                    <template if:true={results}>
-                        <template for:each={results.Payments__r} for:item="payment">
-                            <c-my-payments-tile key={payment.Id} payment={payment} ></c-my-payments-tile>
+    <div class="slds-p-vertical_small">
+        <lightning-card variant="Narrow" title="Information about sponsored Children" icon-name="custom:custom15">
+            <lightning-accordion allow-multiple-sections-open >
+                <template if:true={results}>
+                        <template for:each={childrens} for:item="children">
+                            <c-children-tile key={children.Id} children-id={children.npe4__RelatedContact__c} ></c-children-tile>
                         </template>
+                </template>
+            </lightning-accordion>
+            
+        </lightning-card>
+    </div>
+    <div class="slds-p-vertical_small">
+        <lightning-card variant="Narrow" title="My payments" icon-name="custom:custom41">
+            <lightning-accordion allow-multiple-sections-open >
+                <lightning-accordion-section name="Next Payments" label="Next Payments">
+                    <template if:true={results}>
+                            <c-my-opportunities-tile opp={payments} donation="false" ></c-my-opportunities-tile>
                     </template>
-            </lightning-accordion-section>
-        </lightning-accordion>
-    </lightning-card>
-
+                </lightning-accordion-section>
+                <lightning-accordion-section name="Past Payments" label="Past Payments">
+                        <template if:true={results}>
+                                <c-my-payments-tile  payment={results.Payments__r} ></c-my-payments-tile>
+                        </template>
+                </lightning-accordion-section>
+                <lightning-accordion-section name="My Donations" label="My Donations">
+                        <template if:true={results}>
+                                <c-my-opportunities-tile  opp={mydonations} donation="true" ></c-my-opportunities-tile>
+                        </template>
+                </lightning-accordion-section>
+            </lightning-accordion>
+        </lightning-card>
+    </div>
+    <div class="slds-p-vertical_small">
+        <lightning-card  variant="Narrow"  title="Want to help sponsor more children ? " icon-name="custom:custom1">
+            <p class="slds-p-horizontal_small">
+                <lightning-button variant="brand" label="Click here !" title="Primary action" onclick={openmodal} class="slds-m-left_x-small"></lightning-button>
+                    <template if:true={openmodel}>
+                        <c-modal-sponsor openmodel={openmodel} onclosedmodal={closeModal}></c-modal-sponsor>
+                    </template>
+            </p>
+        </lightning-card>
+    </div>
 </template>

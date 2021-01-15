@@ -1,8 +1,36 @@
 <template >
     <template if:true={children}>
         <lightning-accordion-section name={children.Name} label={children.Name}>
-            <p>{children.Name}</p>
-            <p>{children. Age__c}</p>
+            <div class="c-container">
+                <lightning-layout multiple-rows="true">
+                    <lightning-layout-item padding="around-small" size="12">
+                        <lightning-layout>
+                            <lightning-layout-item padding="around-small" size="3">
+                                <div class="page-section page-right">
+                                    <img src={avatar}>
+                                </div>
+                            </lightning-layout-item>
+                            <lightning-layout-item padding="around-small" size="6">
+                                <div class="page-section page-main">
+                                    <lightning-input readonly type="text" label="Age" value={children.Age__c}></lightning-input>
+                                    <lightning-input readonly type="text" label="Class" value={children.Class__c}></lightning-input>
+                                    <lightning-input readonly type="text" label="School" value={children.School__c}></lightning-input>
+                                    <lightning-textarea readonly label="Description" value={children.Description}></lightning-textarea>
+                                    <lightning-input readonly type="text" label="Person in Charge" value={children.Person_in_charge__c}></lightning-input>
+                                </div>
+                            </lightning-layout-item>
+                            <lightning-layout-item padding="around-small" size="3">
+                                <div class="page-section page-right">
+                                    <p>Here you can upload any file to share</p>
+                                    <c-file-upload my-record-id={childrenId}></c-file-upload>
+                                </div>
+                            </lightning-layout-item>
+                        </lightning-layout>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </div>
         </lightning-accordion-section>
+        
     </template>
 </template>
+    
